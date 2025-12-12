@@ -7,6 +7,7 @@ export default function HomeContent() {
   const [email, setEmail] = useState("");
   const [subscribeStatus, setSubscribeStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [subscribeMessage, setSubscribeMessage] = useState("");
+  const [isPhoneExpanded, setIsPhoneExpanded] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -318,18 +319,18 @@ export default function HomeContent() {
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: Text Content */}
-            <div className="text-center lg:text-left order-2 lg:order-1">
+            <div className="text-center lg:text-left order-2 lg:order-1 max-w-2xl mx-auto lg:mx-0">
               <h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold mb-4 sm:mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 lg:mb-7 px-4 lg:px-0"
                 style={{ 
                   color: '#161616',
-                  lineHeight: '1.2'
+                  lineHeight: '1.15'
                 }}
               >
-                Your Trusted{' '}
+                Premium{' '}
                 <span 
                   style={{
                     background: 'linear-gradient(90deg, #3b9032 0%, #81c029 100%)',
@@ -338,37 +339,97 @@ export default function HomeContent() {
                     backgroundClip: 'text'
                   }}
                 >
-                  Nutraceutical Partner
+                  Nutraceutical Manufacturing
                 </span>
                 {' '}in Utah
               </h1>
               <p 
-                className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 lg:mb-10 px-4 lg:px-0"
-                style={{ color: '#4b5563' }}
+                className="text-base sm:text-lg md:text-xl lg:text-xl mb-4 sm:mb-6 px-4 lg:px-0 max-w-xl mx-auto lg:mx-0"
+                style={{ 
+                  color: '#4b5563',
+                  lineHeight: '1.6'
+                }}
               >
                 Delivering exceptional quality with rapid turnaround times, backed by industry-leading expertise
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-6 sm:mb-8 px-4 lg:px-0">
+              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start mt-6 sm:mt-2 lg:mt-0 mb-6 sm:mb-8 px-4 lg:px-0">
+                {/* Call Now Button - Circle with Phone Icon */}
+                <div className="relative group">
+                  <a 
+                    href="tel:+13852808343"
+                    className="flex items-center justify-center rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:shadow-lg overflow-hidden"
+                    style={{
+                      background: 'linear-gradient(90deg, #3b9032 0%, #81c029 100%)',
+                      color: 'white',
+                      width: isPhoneExpanded ? 'auto' : 'clamp(48px, 10vw, 56px)',
+                      minWidth: isPhoneExpanded ? 'auto' : 'clamp(48px, 10vw, 56px)',
+                      height: 'clamp(48px, 10vw, 56px)',
+                      paddingLeft: isPhoneExpanded ? 'clamp(20px, 4vw, 28px)' : '0',
+                      paddingRight: isPhoneExpanded ? 'clamp(20px, 4vw, 28px)' : '0',
+                      gap: isPhoneExpanded ? 'clamp(8px, 1.5vw, 12px)' : '0',
+                    }}
+                    onClick={(e) => {
+                      // On mobile, expand on first click (prevent call), then allow call on second click
+                      if (window.innerWidth < 768 && !isPhoneExpanded) {
+                        e.preventDefault();
+                        setIsPhoneExpanded(true);
+                      }
+                      // If already expanded on mobile, let the call go through (don't prevent default)
+                    }}
+                    onMouseEnter={() => {
+                      // On desktop, expand on hover
+                      if (window.innerWidth >= 768) {
+                        setIsPhoneExpanded(true);
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      // On desktop, collapse on mouse leave
+                      if (window.innerWidth >= 768) {
+                        setIsPhoneExpanded(false);
+                      }
+                    }}
+                  >
+                    <svg 
+                      className="flex-shrink-0"
+                      style={{
+                        width: 'clamp(20px, 4vw, 24px)',
+                        height: 'clamp(20px, 4vw, 24px)'
+                      }}
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                    <span 
+                      className="whitespace-nowrap"
+                      style={{
+                        opacity: isPhoneExpanded ? 1 : 0,
+                        width: isPhoneExpanded ? 'auto' : '0',
+                        transition: 'opacity 0.3s ease, width 0.3s ease',
+                      }}
+                    >
+                      Call Now: (385) 280-8343
+                    </span>
+                  </a>
+                </div>
+
                 <a 
-                  href="/capabilities"
-                  className="px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  style={{
-                    background: 'linear-gradient(90deg, #3b9032 0%, #81c029 100%)',
-                    color: 'white'
-                  }}
-                >
-                  Our Capabilities
-                </a>
-                <a 
-                  href="/about"
-                  className="px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105"
+                  href="/contact"
+                  className="rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 flex items-center justify-center"
                   style={{
                     border: `2px solid #3b9032`,
                     color: '#3b9032',
-                    backgroundColor: 'rgba(129, 192, 41, 0.1)'
+                    backgroundColor: 'rgba(129, 192, 41, 0.1)',
+                    height: 'clamp(48px, 10vw, 56px)',
+                    paddingLeft: 'clamp(20px, 4vw, 32px)',
+                    paddingRight: 'clamp(20px, 4vw, 32px)',
                   }}
                 >
-                  Learn More
+                  Contact Us
                 </a>
               </div>
             </div>
@@ -767,7 +828,7 @@ export default function HomeContent() {
       </div>
 
       {/* Built for Supplement Brands Section */}
-      <div className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
+      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* Left: Interactive Product Display - Desktop Only */}
@@ -1178,7 +1239,7 @@ export default function HomeContent() {
       </div>
 
       {/* Fast but Careful Section */}
-      <div className="relative py-16 sm:py-20 lg:py-24 overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
+      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div 
@@ -1570,7 +1631,7 @@ export default function HomeContent() {
       </div>
 
       {/* Trusted Partners & Testimonials Section */}
-      <div className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
+      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-on-scroll">
@@ -1987,7 +2048,7 @@ export default function HomeContent() {
       </div>
 
       {/* Stay in the Loop Section */}
-      <div className="relative py-12">
+      <div className="relative py-8 sm:py-12 lg:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-3"
@@ -2085,7 +2146,7 @@ export default function HomeContent() {
       </div>
 
       {/* Footer Section */}
-      <footer className="relative py-12 border-t" style={{ borderColor: 'rgba(59, 144, 50, 0.1)' }}>
+      <footer className="relative py-8 sm:py-12 lg:py-16 border-t" style={{ borderColor: 'rgba(59, 144, 50, 0.1)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Left Column - Company Info */}

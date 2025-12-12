@@ -86,16 +86,77 @@ export default function ContactContent() {
     <div
       style={{
         minHeight: "100vh",
-        paddingTop: "30px",
+        paddingTop: "20px",
         background: "linear-gradient(135deg, #f9fafb 0%, #ffffff 100%)",
         color: "#1f2937",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        .animate-fadeInDown {
+          animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-scaleIn {
+          animation: scaleIn 0.8s ease-out forwards;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+      `}</style>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         {/* Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-6 sm:mb-8 animate-fadeInDown">
           <h1
-            className="text-5xl md:text-6xl font-bold mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4"
             style={{
               background: "linear-gradient(90deg, #3b9032 0%, #81c029 100%)",
               WebkitBackgroundClip: "text",
@@ -106,42 +167,42 @@ export default function ContactContent() {
             Contact Us
           </h1>
           <p
-            className="text-xl md:text-2xl max-w-3xl mx-auto"
+            className="text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto px-4"
             style={{ color: "#4b5563" }}
           >
-            Get in touch with our team. We're here to help you with your nutritional supplement needs.
+            Get in touch with our team
           </p>
         </div>
 
         {/* Contact Information and Form Grid */}
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
           {/* Contact Information */}
-          <div>
+          <div className="animate-fadeInUp stagger-1">
             <h2
-              className="text-3xl font-bold mb-8"
+              className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 lg:mb-8"
               style={{ color: "#1f2937" }}
             >
               Get In Touch
             </h2>
             
-            <div className="space-y-6">
+            <div className="space-y-3 sm:space-y-4 lg:space-y-6">
               {/* Address */}
               <div
-                className="p-6 rounded-xl"
+                className="p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl animate-scaleIn stagger-2"
                 style={{
                   background: "rgba(59, 144, 50, 0.05)",
                   border: `1px solid rgba(59, 144, 50, 0.2)`,
                 }}
               >
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-3 sm:space-x-4">
                   <div
-                    className="p-3 rounded-lg"
+                    className="p-2 sm:p-2.5 lg:p-3 rounded-lg flex-shrink-0"
                     style={{
                       background: "linear-gradient(135deg, #3b9032 0%, #81c029 100%)",
                     }}
                   >
                     <svg
-                      className="w-6 h-6 text-white"
+                      className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -162,15 +223,14 @@ export default function ContactContent() {
                   </div>
                   <div>
                     <h3
-                      className="font-semibold text-lg mb-2"
+                      className="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2"
                       style={{ color: "#3b9032" }}
                     >
                       Our Location
                     </h3>
-                    <p style={{ color: "#4b5563" }}>
+                    <p className="text-xs sm:text-sm lg:text-base" style={{ color: "#4b5563" }}>
                       395 N 1140 W, Suite 2<br />
-                      Ogden, UT 84404<br />
-                      USA
+                      Ogden, UT 84404, USA
                     </p>
                   </div>
                 </div>
@@ -178,21 +238,21 @@ export default function ContactContent() {
 
               {/* Phone */}
               <div
-                className="p-6 rounded-xl"
+                className="p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl animate-scaleIn stagger-3"
                 style={{
                   background: "rgba(59, 144, 50, 0.05)",
                   border: `1px solid rgba(59, 144, 50, 0.2)`,
                 }}
               >
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-3 sm:space-x-4">
                   <div
-                    className="p-3 rounded-lg"
+                    className="p-2 sm:p-2.5 lg:p-3 rounded-lg flex-shrink-0"
                     style={{
                       background: "linear-gradient(135deg, #3b9032 0%, #81c029 100%)",
                     }}
                   >
                     <svg
-                      className="w-6 h-6 text-white"
+                      className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -207,12 +267,12 @@ export default function ContactContent() {
                   </div>
                   <div>
                     <h3
-                      className="font-semibold text-lg mb-2"
+                      className="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2"
                       style={{ color: "#3b9032" }}
                     >
                       Phone
                     </h3>
-                    <p style={{ color: "#4b5563" }}>
+                    <p className="text-xs sm:text-sm lg:text-base" style={{ color: "#4b5563" }}>
                       <a href="tel:+13852808343" className="hover:underline" style={{ color: "#4b5563" }}>
                         (385) 280-8343
                       </a>
@@ -223,21 +283,21 @@ export default function ContactContent() {
 
               {/* Email */}
               <div
-                className="p-6 rounded-xl"
+                className="p-3 sm:p-4 lg:p-6 rounded-lg sm:rounded-xl animate-scaleIn stagger-4"
                 style={{
                   background: "rgba(59, 144, 50, 0.05)",
                   border: `1px solid rgba(59, 144, 50, 0.2)`,
                 }}
               >
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-3 sm:space-x-4">
                   <div
-                    className="p-3 rounded-lg"
+                    className="p-2 sm:p-2.5 lg:p-3 rounded-lg flex-shrink-0"
                     style={{
                       background: "linear-gradient(135deg, #3b9032 0%, #81c029 100%)",
                     }}
                   >
                     <svg
-                      className="w-6 h-6 text-white"
+                      className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -250,18 +310,18 @@ export default function ContactContent() {
                       />
                     </svg>
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h3
-                      className="font-semibold text-lg mb-2"
+                      className="font-semibold text-sm sm:text-base lg:text-lg mb-1 sm:mb-2"
                       style={{ color: "#3b9032" }}
                     >
                       Email
                     </h3>
-                    <p style={{ color: "#4b5563" }}>
+                    <p className="text-xs sm:text-sm lg:text-base break-words" style={{ color: "#4b5563" }}>
                       <a href="mailto:kwybrow@apexnutraus.com" className="hover:underline" style={{ color: "#4b5563" }}>
                         kwybrow@apexnutraus.com
                       </a><br />
-                      <span className="text-sm" style={{ color: "#6b7280" }}>
+                      <span className="text-xs sm:text-sm" style={{ color: "#6b7280" }}>
                         Contact: Kim Wybrow
                       </span>
                     </p>
@@ -272,15 +332,15 @@ export default function ContactContent() {
           </div>
 
           {/* Contact Form */}
-          <div>
+          <div className="animate-fadeInUp stagger-2">
             <h2
-              className="text-3xl font-bold mb-8"
+              className="text-xl sm:text-2xl lg:text-3xl font-bold mb-4 sm:mb-6 lg:mb-8"
               style={{ color: "#1f2937" }}
             >
-              Send Us A Message
+              Send A Message
             </h2>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 lg:space-y-6">
               {/* Status Message */}
               {submitStatus.type && (
                 <div
@@ -305,7 +365,7 @@ export default function ContactContent() {
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium mb-2"
+                  className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2"
                   style={{ color: "#4b5563" }}
                 >
                   Name
@@ -317,7 +377,7 @@ export default function ContactContent() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2"
+                  className="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg focus:outline-none focus:ring-2 text-sm sm:text-base"
                   style={{
                     background: "#ffffff",
                     border: `1px solid rgba(59, 144, 50, 0.2)`,
@@ -329,7 +389,7 @@ export default function ContactContent() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium mb-2"
+                  className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2"
                   style={{ color: "#4b5563" }}
                 >
                   Email
@@ -341,7 +401,7 @@ export default function ContactContent() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2"
+                  className="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg focus:outline-none focus:ring-2 text-sm sm:text-base"
                   style={{
                     background: "#ffffff",
                     border: `1px solid rgba(59, 144, 50, 0.2)`,
@@ -353,7 +413,7 @@ export default function ContactContent() {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium mb-2"
+                  className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2"
                   style={{ color: "#4b5563" }}
                 >
                   Subject
@@ -365,7 +425,7 @@ export default function ContactContent() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2"
+                  className="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg focus:outline-none focus:ring-2 text-sm sm:text-base"
                   style={{
                     background: "#ffffff",
                     border: `1px solid rgba(59, 144, 50, 0.2)`,
@@ -377,7 +437,7 @@ export default function ContactContent() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium mb-2"
+                  className="block text-xs sm:text-sm font-medium mb-1 sm:mb-2"
                   style={{ color: "#4b5563" }}
                 >
                   Message
@@ -388,8 +448,8 @@ export default function ContactContent() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={6}
-                  className="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 resize-none"
+                  rows={4}
+                  className="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg focus:outline-none focus:ring-2 resize-none text-sm sm:text-base"
                   style={{
                     background: "#ffffff",
                     border: `1px solid rgba(59, 144, 50, 0.2)`,
@@ -401,7 +461,7 @@ export default function ContactContent() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="w-full py-3 px-4 sm:py-4 sm:px-6 rounded-lg font-semibold text-white text-sm sm:text-base transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 style={{
                   background: "linear-gradient(135deg, #3b9032 0%, #81c029 100%)",
                   boxShadow: "0 10px 30px rgba(59, 144, 50, 0.2)",

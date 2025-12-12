@@ -274,7 +274,7 @@ export default function ManufacturerContent() {
       {/* Hero Section */}
       <div 
         data-section="hero"
-        className="relative pt-16 pb-12 lg:pt-16 lg:pb-20 overflow-hidden"
+        className="relative py-8 sm:py-12 lg:py-16 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         {/* Background Grid Pattern */}
@@ -305,7 +305,7 @@ export default function ManufacturerContent() {
         ></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className={`text-center mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('hero') ? 'visible' : ''}`}>
+          <div className={`text-center mb-8 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('hero') ? 'visible' : ''}`}>
             <div className="inline-block mb-6">
               <span 
                 className="text-sm font-semibold tracking-wider uppercase px-4 py-2 rounded-full"
@@ -375,11 +375,11 @@ export default function ManufacturerContent() {
       {/* Process Steps Section */}
       <div 
         data-section="process"
-        className="relative py-16 lg:py-24"
+        className="relative py-8 sm:py-12 lg:py-16"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`text-center mb-16 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('process') ? 'visible' : ''}`}>
+          <div className={`text-center mb-8 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('process') ? 'visible' : ''}`}>
             <h2 
               className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
               style={{ color: '#161616' }}
@@ -700,7 +700,7 @@ export default function ManufacturerContent() {
       <div 
         id="machinery"
         data-section="machinery"
-        className="relative pt-8 lg:pt-12 pb-16 lg:pb-24 overflow-hidden"
+        className="relative py-8 sm:py-12 lg:py-16 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         {/* Background Pattern */}
@@ -714,7 +714,7 @@ export default function ManufacturerContent() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className={`text-center mb-16 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('machinery') ? 'visible' : ''}`}>
+          <div className={`text-center mb-8 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('machinery') ? 'visible' : ''}`}>
             <div className="inline-block mb-6">
               <span 
                 className="text-sm font-semibold tracking-wider uppercase px-4 py-2 rounded-full"
@@ -2399,7 +2399,7 @@ export default function ManufacturerContent() {
           </div>
 
           {/* Bottom Stats */}
-          <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 section-animate animate-fadeInUp stagger-3 ${visibleSections.has('machinery') ? 'visible' : ''}`}>
+          <div className={`mt-10 lg:mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 section-animate animate-fadeInUp stagger-3 ${visibleSections.has('machinery') ? 'visible' : ''}`}>
             <div className="text-center">
               <div 
                 className="text-3xl lg:text-4xl font-bold mb-2"
@@ -2471,7 +2471,7 @@ export default function ManufacturerContent() {
       {/* CTA Section */}
       <div 
         data-section="cta"
-        className="relative pt-8 lg:pt-12 pb-16 lg:pb-24"
+        className="relative py-8 sm:py-12 lg:py-16"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -2519,7 +2519,7 @@ export default function ManufacturerContent() {
       </div>
 
       {/* Footer */}
-      <footer className="relative py-16 border-t" style={{ backgroundColor: '#ffffff', borderColor: 'rgba(59, 144, 50, 0.1)' }}>
+      <footer className="relative py-8 sm:py-12 lg:py-16 border-t" style={{ backgroundColor: '#ffffff', borderColor: 'rgba(59, 144, 50, 0.1)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">

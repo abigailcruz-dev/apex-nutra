@@ -653,7 +653,7 @@ export default function CapabilitiesContent() {
       {/* Product Capabilities Section */}
       <div 
         data-section="capabilities"
-        className="relative py-6 lg:py-10 overflow-hidden"
+        className="relative py-8 sm:py-12 lg:py-16 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         {/* Subtle Dot Pattern Background */}
@@ -685,15 +685,14 @@ export default function CapabilitiesContent() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className={`text-center mb-20 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('capabilities') ? 'visible' : ''}`}>
-            <div className="inline-flex items-center gap-2 mb-6 px-5 py-2.5 rounded-full" style={{ 
-              backgroundColor: 'rgba(129, 192, 41, 0.1)',
-              border: '1px solid rgba(129, 192, 41, 0.3)'
-            }}>
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#81c029' }}></div>
+          <div className={`text-center mb-8 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('capabilities') ? 'visible' : ''}`}>
+            <div className="inline-block mb-4">
               <span 
-                className="text-sm font-semibold tracking-wider uppercase"
-                style={{ color: '#81c029' }}
+                className="text-xs sm:text-sm font-bold tracking-widest uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full"
+                style={{ 
+                  color: '#3b9032',
+                  backgroundColor: 'rgba(59, 144, 50, 0.15)'
+                }}
               >
                 What We Offer
               </span>
@@ -966,7 +965,7 @@ export default function CapabilitiesContent() {
           </div>
 
           {/* Icon Summary Section */}
-          <div className={`max-w-5xl mx-auto mt-20 section-animate animate-fadeInUp stagger-4 ${visibleSections.has('capabilities') ? 'visible' : ''}`}>
+          <div className={`max-w-5xl mx-auto mt-12 lg:mt-16 section-animate animate-fadeInUp stagger-4 ${visibleSections.has('capabilities') ? 'visible' : ''}`}>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Custom Formulation */}
               <div className="text-center">
@@ -1049,12 +1048,12 @@ export default function CapabilitiesContent() {
       {/* Ingredient Expertise Section */}
       <div 
         data-section="ingredients"
-        className="relative py-10 lg:py-16 overflow-hidden"
+        className="relative py-8 sm:py-10 lg:py-12 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className={`text-center mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('ingredients') ? 'visible' : ''}`}>
+          <div className={`text-center mb-8 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('ingredients') ? 'visible' : ''}`}>
             <div className="inline-block mb-4">
               <span 
                 className="text-xs sm:text-sm font-bold tracking-widest uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full"
@@ -1265,12 +1264,12 @@ export default function CapabilitiesContent() {
       {/* Core Manufacturing Capabilities Section */}
       <div 
         data-section="manufacturing"
-        className="relative py-10 lg:py-16 overflow-hidden"
+        className="relative py-8 sm:py-10 lg:py-12 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className={`text-center mb-16 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('manufacturing') ? 'visible' : ''}`}>
+          <div className={`text-center mb-8 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('manufacturing') ? 'visible' : ''}`}>
             <div className="inline-block mb-4">
               <span 
                 className="text-xs sm:text-sm font-bold tracking-widest uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full"
@@ -1575,7 +1574,7 @@ export default function CapabilitiesContent() {
       {/* CTA Section */}
       <div 
         data-section="cta"
-        className="relative py-16 lg:py-24 overflow-hidden"
+        className="relative py-8 sm:py-12 lg:py-16 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="absolute inset-0">
@@ -1632,7 +1631,7 @@ export default function CapabilitiesContent() {
       </div>
 
       {/* Footer */}
-      <footer className="relative py-16 border-t" style={{ backgroundColor: '#ffffff', borderColor: 'rgba(59, 144, 50, 0.1)' }}>
+      <footer className="relative py-8 sm:py-12 lg:py-16 border-t" style={{ backgroundColor: '#ffffff', borderColor: 'rgba(59, 144, 50, 0.1)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">

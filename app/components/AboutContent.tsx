@@ -7,14 +7,11 @@ function TeamCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   
   const teamMembers = [
-    { name: 'Name Here', role: 'Title or Position Here', gender: 'female' },
-    { name: 'Name Here', role: 'Title or Position Here', gender: 'male' },
-    { name: 'Name Here', role: 'Title or Position Here', gender: 'female' },
-    { name: 'Name Here', role: 'Title or Position Here', gender: 'male' },
-    { name: 'Name Here', role: 'Title or Position Here', gender: 'female' },
-    { name: 'Name Here', role: 'Title or Position Here', gender: 'male' },
-    { name: 'Name Here', role: 'Title or Position Here', gender: 'female' },
-    { name: 'Name Here', role: 'Title or Position Here', gender: 'male' }
+    { name: 'Joseph Cronen', role: 'Quality Manager', gender: 'male' },
+    { name: 'Lili Flores', role: 'Production Manager', gender: 'female' },
+    { name: 'Trevor Greenwell', role: 'Continues Improvement', gender: 'female' },
+    { name: 'Manuel Vasquez', role: 'Maintenance/Engineering', gender: 'male' },
+    { name: 'Leslie Calles', role: 'Packet/Kitting', gender: 'female' }
   ];
 
   const nextSlide = () => {
@@ -33,23 +30,22 @@ function TeamCarousel() {
     
     // Define all positions in the rotation sequence
     const positions = [
-      // Position 0 - Front center (active)
+      // 0 - Center front
       { left: '50%', top: '50%', scale: 1, zIndex: 10, blur: 0, opacity: 1 },
-      // Position 1 - Moving to back right
-      { left: '72%', top: '55%', scale: 0.8, zIndex: 5, blur: 2, opacity: 0.85 },
-      // Position 2 - Back right
-      { left: '80%', top: '60%', scale: 0.7, zIndex: 4, blur: 4, opacity: 0.75 },
-      // Position 3 - Far back right
-      { left: '85%', top: '65%', scale: 0.6, zIndex: 3, blur: 6, opacity: 0.65 },
-      // Position 4 - Behind center (hidden/back)
-      { left: '50%', top: '70%', scale: 0.55, zIndex: 2, blur: 8, opacity: 0.55 },
-      // Position 5 - Far back left
-      { left: '15%', top: '65%', scale: 0.6, zIndex: 3, blur: 6, opacity: 0.65 },
-      // Position 6 - Back left
-      { left: '20%', top: '60%', scale: 0.7, zIndex: 4, blur: 4, opacity: 0.75 },
-      // Position 7 - Moving to front from left
-      { left: '28%', top: '55%', scale: 0.8, zIndex: 5, blur: 2, opacity: 0.85 }
+
+      // 1 - Right side
+      { left: '75%', top: '55%', scale: 0.8, zIndex: 5, blur: 2, opacity: 0.85 },
+
+      // 2 - Back center
+      { left: '50%', top: '65%', scale: 0.6, zIndex: 3, blur: 6, opacity: 0.65 },
+
+      // 3 - Left side
+      { left: '25%', top: '55%', scale: 0.8, zIndex: 5, blur: 2, opacity: 0.85 },
+
+      // 4 - Hidden (far back)
+      { left: '50%', top: '80%', scale: 0.4, zIndex: 1, blur: 10, opacity: 0 },
     ];
+
     
     const pos = positions[normalizedPosition];
     
@@ -65,7 +61,7 @@ function TeamCarousel() {
   };
 
   return (
-    <div className="relative mb-16 h-[300px] sm:h-[350px] lg:h-[400px]">
+    <div className="relative mb-0 h-[300px] sm:h-[350px] lg:h-[400px]">
       {/* Carousel Container */}
       <div className="relative w-full h-full flex items-center justify-center" style={{ perspective: '1000px' }}>
         {teamMembers.map((member, index) => {
@@ -164,19 +160,6 @@ function TeamCarousel() {
                   />
                 </div>
                 
-                {/* Coming soon badge - only on center card */}
-                {isCenter && (
-                  <div 
-                    className="mt-auto px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide"
-                    style={{
-                      background: 'rgba(59, 144, 50, 0.2)',
-                      color: '#3b9032',
-                      border: '1px solid rgba(59, 144, 50, 0.4)'
-                    }}
-                  >
-                    Coming Soon
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -725,7 +708,7 @@ export default function AboutContent() {
       {/* History Section - Journey Timeline */}
       <div 
         data-section="history"
-        className="relative pt-8 pb-12 lg:pt-12 lg:pb-20 overflow-hidden"
+        className="relative py-8 sm:py-12 lg:py-16 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         {/* Background Grid Pattern */}
@@ -757,7 +740,7 @@ export default function AboutContent() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className={`text-center mb-20 lg:mb-32 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('history') ? 'visible' : ''}`}>
+          <div className={`text-center mb-8 sm:mb-12 lg:mb-16 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('history') ? 'visible' : ''}`}>
             <div className="inline-block mb-6">
               <span 
                 className="text-sm font-semibold tracking-wider uppercase px-4 py-2 rounded-full"
@@ -1009,10 +992,14 @@ export default function AboutContent() {
                         <>
                           <div className="text-right pr-8">
                             <div 
-                              className="inline-block px-6 py-2 rounded-full mb-6"
+                              className="inline-flex items-center justify-center rounded-full mb-6"
                               style={{
                                 background: `linear-gradient(135deg, ${'#3b9032'}, ${'#81c029'})`,
-                                boxShadow: `0 4px 20px ${'rgba(59, 144, 50, 0.3)'}`
+                                boxShadow: `0 4px 20px ${'rgba(59, 144, 50, 0.3)'}}`,
+                                minWidth: '140px',
+                                height: '48px',
+                                paddingLeft: '24px',
+                                paddingRight: '24px'
                               }}
                             >
                               <span className="text-white font-bold text-2xl">{milestone.year}</span>
@@ -1084,10 +1071,14 @@ export default function AboutContent() {
                           {/* Right Side */}
                           <div className="text-left pl-8">
                             <div 
-                              className="inline-block px-6 py-2 rounded-full mb-6"
+                              className="inline-flex items-center justify-center rounded-full mb-6"
                               style={{
                                 background: `linear-gradient(135deg, ${'#3b9032'}, ${'#81c029'})`,
-                                boxShadow: `0 4px 20px ${'rgba(59, 144, 50, 0.3)'}`
+                                boxShadow: `0 4px 20px ${'rgba(59, 144, 50, 0.3)'}}`,
+                                minWidth: '140px',
+                                height: '48px',
+                                paddingLeft: '24px',
+                                paddingRight: '24px'
                               }}
                             >
                               <span className="text-white font-bold text-2xl">{milestone.year}</span>
@@ -1115,10 +1106,14 @@ export default function AboutContent() {
                       <div className="flex-1">
                         <div className="mb-2">
                           <div 
-                            className="inline-block px-3 py-1 rounded-full"
+                            className="inline-flex items-center justify-center rounded-full"
                             style={{
                               background: `linear-gradient(135deg, ${'#3b9032'}, ${'#81c029'})`,
-                              boxShadow: `0 4px 20px ${'rgba(59, 144, 50, 0.3)'}`
+                              boxShadow: `0 4px 20px ${'rgba(59, 144, 50, 0.3)'}}`,
+                              minWidth: '100px',
+                              height: '32px',
+                              paddingLeft: '12px',
+                              paddingRight: '12px'
                             }}
                           >
                             <span className="text-white font-bold text-sm">{milestone.year}</span>
@@ -1166,7 +1161,7 @@ export default function AboutContent() {
       {/* Mission Section */}
       <div 
         data-section="mission"
-        className="relative py-12 lg:py-20 overflow-hidden"
+        className="relative pt-8 pb-4 sm:pt-12 sm:pb-6 lg:pt-16 lg:pb-8 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -1426,20 +1421,24 @@ export default function AboutContent() {
                     />
                     <button
                       onClick={() => setActiveTab('mission')}
-                      className="relative text-sm font-bold tracking-widest uppercase px-4 py-2 rounded-full transition-all duration-300"
+                      className="relative text-sm font-bold tracking-widest uppercase rounded-full transition-all duration-300"
                       style={{ 
                         color: activeTab === 'mission' ? '#ffffff' : ('#3b9032'),
-                        zIndex: 1
+                        zIndex: 1,
+                        minWidth: '110px',
+                        padding: '8px 16px'
                       }}
                     >
                       Mission
                     </button>
                     <button
                       onClick={() => setActiveTab('vision')}
-                      className="relative text-sm font-bold tracking-widest uppercase px-4 py-2 rounded-full transition-all duration-300"
+                      className="relative text-sm font-bold tracking-widest uppercase rounded-full transition-all duration-300"
                       style={{ 
                         color: activeTab === 'vision' ? '#ffffff' : ('#3b9032'),
-                        zIndex: 1
+                        zIndex: 1,
+                        minWidth: '110px',
+                        padding: '8px 16px'
                       }}
                     >
                       Vision
@@ -1576,8 +1575,8 @@ export default function AboutContent() {
 
           {/* Mobile Layout */}
           <div className={`lg:hidden text-center section-animate animate-fadeInUp stagger-1 ${visibleSections.has('mission') ? 'visible' : ''}`}>
-            <div className="mb-8">
-              <div className="inline-flex relative rounded-full p-1 mb-6" style={{ 
+            <div>
+              <div className="inline-flex relative rounded-full p-1 mb-2" style={{ 
                 backgroundColor: 'rgba(59, 144, 50, 0.15)',
                 border: `2px solid ${'#3b9032'}`
               }}>
@@ -1594,62 +1593,68 @@ export default function AboutContent() {
                 />
                 <button
                   onClick={() => setActiveTab('mission')}
-                  className="relative text-xs font-bold tracking-widest uppercase px-3 py-2 rounded-full transition-all duration-300"
+                  className="relative text-xs font-bold tracking-widest uppercase rounded-full transition-all duration-300"
                   style={{ 
                     color: activeTab === 'mission' ? '#ffffff' : ('#3b9032'),
-                    zIndex: 1
+                    zIndex: 1,
+                    minWidth: '90px',
+                    padding: '8px 12px'
                   }}
                 >
                   Mission
                 </button>
                 <button
                   onClick={() => setActiveTab('vision')}
-                  className="relative text-xs font-bold tracking-widest uppercase px-3 py-2 rounded-full transition-all duration-300"
+                  className="relative text-xs font-bold tracking-widest uppercase rounded-full transition-all duration-300"
                   style={{ 
                     color: activeTab === 'vision' ? '#ffffff' : ('#3b9032'),
-                    zIndex: 1
+                    zIndex: 1,
+                    minWidth: '90px',
+                    padding: '8px 12px'
                   }}
                 >
                   Vision
                 </button>
               </div>
               
-              {activeTab === 'mission' ? (
-                <h2 
-                  className="text-3xl sm:text-4xl font-bold mb-6 leading-tight"
-                  style={{ color: '#161616' }}
-                >
-                  Excellence in Every
-                  <br />
-                  <span 
-                    style={{
-                      backgroundImage: 'linear-gradient(90deg, #3b9032 0%, #81c029 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text'
-                    }}
+              <div>
+                {activeTab === 'mission' ? (
+                  <h2 
+                    className="text-3xl sm:text-4xl font-bold mb-2 leading-tight"
+                    style={{ color: '#161616' }}
                   >
-                    Product
-                  </span>
-                </h2>
-              ) : (
-                <h2 
-                  className="text-3xl sm:text-4xl font-bold mb-6 leading-tight"
-                  style={{ color: '#161616' }}
-                >
-                  Leading the{' '}
-                  <span 
-                    style={{
-                      backgroundImage: 'linear-gradient(135deg, #81c029 0%, #3b9032 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text'
-                    }}
+                    Excellence in Every
+                    <br />
+                    <span 
+                      style={{
+                        backgroundImage: 'linear-gradient(90deg, #3b9032 0%, #81c029 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text'
+                      }}
+                    >
+                      Product
+                    </span>
+                  </h2>
+                ) : (
+                  <h2 
+                    className="text-3xl sm:text-4xl font-bold mb-2 leading-tight"
+                    style={{ color: '#161616' }}
                   >
-                    Future
-                  </span>
-                </h2>
-              )}
+                    Leading the{' '}
+                    <span 
+                      style={{
+                        backgroundImage: 'linear-gradient(135deg, #81c029 0%, #3b9032 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text'
+                      }}
+                    >
+                      Future
+                    </span>
+                  </h2>
+                )}
+              </div>
             </div>
 
             {/* Mobile Stickpack Scanner */}
@@ -1821,11 +1826,11 @@ export default function AboutContent() {
               </div>
             </div>
 
-            <div style={{ minHeight: '320px' }}>
+            <div>
               {activeTab === 'mission' ? (
                 <>
                   <p 
-                    className="text-base sm:text-lg leading-relaxed mb-6 px-4"
+                    className="text-base sm:text-lg leading-relaxed mb-4 px-4"
                     style={{ color: '#6b7280' }}
                   >
                     To deliver exceptional products with rapid turnaround times, utilizing only the highest-quality ingredients that our clients can trust.
@@ -1861,7 +1866,7 @@ export default function AboutContent() {
               ) : (
                 <>
                   <p 
-                    className="text-base sm:text-lg leading-relaxed mb-6 px-4"
+                    className="text-base sm:text-lg leading-relaxed mb-4 px-4"
                     style={{ color: '#6b7280' }}
                   >
                     To become Utah's premier nutraceutical partner, empowering brands worldwide through sustainable growth, cutting-edge manufacturing, and unwavering integrity.
@@ -1903,18 +1908,18 @@ export default function AboutContent() {
       {/* Owner's Profile Section - Minimalist Modern */}
       <div 
         data-section="owners"
-        className="relative py-12 lg:py-20 overflow-hidden"
+        className="relative pt-4 pb-4 sm:pt-6 sm:pb-6 lg:pt-8 lg:pb-8 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className={`text-center mb-10 lg:mb-20 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('owners') ? 'visible' : ''}`}>
+          <div className={`text-center mb-6 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('owners') ? 'visible' : ''}`}>
             <span 
-              className="inline-block text-xs sm:text-sm font-bold tracking-widest uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6"
+              className="inline-block text-sm font-semibold tracking-wider uppercase px-4 py-2 rounded-full mb-4 sm:mb-6"
               style={{ 
                 color: '#3b9032',
-                backgroundColor: 'rgba(59, 144, 50, 0.15)'
+                backgroundColor: 'rgba(59, 144, 50, 0.1)'
               }}
             >
               Leadership
@@ -1973,9 +1978,6 @@ export default function AboutContent() {
                 >
                   Kim Wybrow
                 </h3>
-                <p className="text-xs sm:text-sm lg:text-base font-medium" style={{ color: '#81c029' }}>
-                  Co-Owner & Visionary
-                </p>
               </div>
 
               {/* Jeannette Wybrow */}
@@ -2009,9 +2011,6 @@ export default function AboutContent() {
                 >
                   Jeannette Wybrow
                 </h3>
-                <p className="text-xs sm:text-sm lg:text-base font-medium" style={{ color: '#81c029' }}>
-                  Co-Owner & Strategist
-                </p>
               </div>
             </div>
           </div>
@@ -2032,18 +2031,18 @@ export default function AboutContent() {
       {/* Team Section */}
       <div 
         data-section="team"
-        className="relative py-12 lg:py-20 overflow-hidden"
+        className="relative py-8 sm:py-12 lg:py-16 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className={`text-center mb-12 lg:mb-16 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('team') ? 'visible' : ''}`}>
+          <div className={`text-center mb-6 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('team') ? 'visible' : ''}`}>
             <span 
-              className="inline-block text-sm font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6"
+              className="inline-block text-sm font-semibold tracking-wider uppercase px-4 py-2 rounded-full mb-6"
               style={{ 
                 color: '#3b9032',
-                backgroundColor: 'rgba(59, 144, 50, 0.15)'
+                backgroundColor: 'rgba(59, 144, 50, 0.1)'
               }}
             >
               Our Team
@@ -2085,18 +2084,18 @@ export default function AboutContent() {
       {/* Facility Preview Section */}
       <div 
         data-section="facility"
-        className="relative py-12 lg:py-20 overflow-hidden"
+        className="relative py-8 sm:py-12 lg:py-16 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className={`text-center mb-10 lg:mb-16 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('facility') ? 'visible' : ''}`}>
+          <div className={`text-center mb-6 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('facility') ? 'visible' : ''}`}>
             <div className="inline-block mb-4">
               <span 
-                className="text-xs sm:text-sm font-bold tracking-widest uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full"
+                className="text-sm font-semibold tracking-wider uppercase px-4 py-2 rounded-full"
                 style={{ 
                   color: '#3b9032',
-                  backgroundColor: 'rgba(59, 144, 50, 0.15)'
+                  backgroundColor: 'rgba(59, 144, 50, 0.1)'
                 }}
               >
                 Our Facility
@@ -2220,18 +2219,18 @@ export default function AboutContent() {
       {/* Certified Excellence Section - Modern Layout */}
       <div 
         data-section="certifications"
-        className="relative py-12 lg:py-20 overflow-hidden"
+        className="relative py-8 sm:py-12 lg:py-16 overflow-hidden"
         style={{ backgroundColor: '#ffffff' }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
-          <div className={`text-center mb-10 lg:mb-16 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('certifications') ? 'visible' : ''}`}>
+          <div className={`text-center mb-6 sm:mb-10 lg:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('certifications') ? 'visible' : ''}`}>
             <div className="inline-block mb-4">
               <span 
-                className="text-xs sm:text-sm font-bold tracking-widest uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full"
+                className="text-sm font-semibold tracking-wider uppercase px-4 py-2 rounded-full"
                 style={{ 
                   color: '#3b9032',
-                  backgroundColor: 'rgba(59, 144, 50, 0.15)'
+                  backgroundColor: 'rgba(59, 144, 50, 0.1)'
                 }}
               >
                 Certifications
@@ -2545,7 +2544,7 @@ export default function AboutContent() {
       </div>
 
       {/* Footer Section */}
-      <footer className="relative py-12 border-t" style={{ backgroundColor: '#ffffff', borderColor: 'rgba(59, 144, 50, 0.1)' }}>
+      <footer className="relative py-8 sm:py-12 lg:py-16 border-t" style={{ backgroundColor: '#ffffff', borderColor: 'rgba(59, 144, 50, 0.1)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Left Column - Company Info */}
