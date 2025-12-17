@@ -1399,7 +1399,7 @@ export default function HomeContent() {
                                   >
                                     {testimonial.name}
                                   </h4>
-                                  {!testimonial.highlighted && testimonial.name !== "CLS Manufacturing" && (
+                                  {testimonial.name !== "CLS Manufacturing" && (
                                     <>
                                       <p 
                                         className="text-xs"
