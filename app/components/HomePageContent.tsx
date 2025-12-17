@@ -267,92 +267,68 @@ export default function HomeContent() {
         }
       `}</style>
       
-      {/* Hero Section with Animated Background */}
-      <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        {/* Animated Background */}
+      {/* Hero Section with Video Background - Fixed Position */}
+      <div className="fixed top-0 left-0 right-0 h-screen flex items-center justify-center overflow-hidden" style={{ zIndex: 1 }}>
+        {/* Video Background */}
         <div className="absolute inset-0 overflow-hidden">
-          <div 
-            className="grid-pattern absolute inset-0"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
             style={{
-              backgroundImage: `linear-gradient(rgba(129, 192, 41, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(129, 192, 41, 0.05) 1px, transparent 1px)`
+              opacity: 0.35
             }}
-          ></div>
+          >
+            <source src="/vffs-machine FULL.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Dark Overlay for better text visibility */}
           <div 
-            className="blob" 
+            className="absolute inset-0"
             style={{
-              width: '500px',
-              height: '500px',
-              top: '10%',
-              left: '10%',
-              background: '#81c029',
-              animation: 'float1 20s ease-in-out infinite',
-              mixBlendMode: 'multiply',
-              opacity: '0.3'
-            }}
-          ></div>
-          <div 
-            className="blob" 
-            style={{
-              width: '400px',
-              height: '400px',
-              top: '50%',
-              right: '15%',
-              background: '#3b9032',
-              animation: 'float2 18s ease-in-out infinite',
-              mixBlendMode: 'multiply',
-              opacity: '0.3'
-            }}
-          ></div>
-          <div 
-            className="blob" 
-            style={{
-              width: '450px',
-              height: '450px',
-              bottom: '10%',
-              left: '30%',
-              background: '#81c029',
-              animation: 'float3 22s ease-in-out infinite',
-              mixBlendMode: 'multiply',
-              opacity: '0.3'
+              background: 'linear-gradient(135deg, rgba(22, 22, 22, 0.7) 0%, rgba(59, 144, 50, 0.5) 50%, rgba(22, 22, 22, 0.7) 100%)'
             }}
           ></div>
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left: Text Content */}
-            <div className="text-center lg:text-left order-2 lg:order-1 max-w-2xl mx-auto lg:mx-0">
-              <h1 
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 sm:mb-6 lg:mb-7 px-4 lg:px-0"
-                style={{ 
-                  color: '#161616',
-                  lineHeight: '1.15'
+        {/* Hero Content - Centered */}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+          <div className="text-center">
+            <h1 
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 px-4"
+              style={{ 
+                color: '#ffffff',
+                lineHeight: '1.15',
+                textShadow: '0 2px 20px rgba(0, 0, 0, 0.5)'
+              }}
+            >
+              Premium{' '}
+              <span 
+                style={{
+                  background: 'linear-gradient(90deg, #81c029 0%, #b8e986 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  textShadow: 'none'
                 }}
               >
-                Premium{' '}
-                <span 
-                  style={{
-                    background: 'linear-gradient(90deg, #3b9032 0%, #81c029 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text'
-                  }}
-                >
-                  Nutraceutical Manufacturing
-                </span>
-                {' '}in Utah
-              </h1>
-              <p 
-                className="text-base sm:text-lg md:text-xl lg:text-xl mb-4 sm:mb-6 px-4 lg:px-0 max-w-xl mx-auto lg:mx-0"
-                style={{ 
-                  color: '#4b5563',
-                  lineHeight: '1.6'
-                }}
-              >
-                Delivering exceptional quality with rapid turnaround times, backed by industry-leading expertise
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start mt-6 sm:mt-2 lg:mt-0 mb-6 sm:mb-8 px-4 lg:px-0">
+                Nutraceutical Manufacturing
+              </span>
+              {' '}in Utah
+            </h1>
+            <p 
+              className="text-lg sm:text-xl md:text-2xl lg:text-2xl mb-8 sm:mb-10 px-4 max-w-3xl mx-auto"
+              style={{ 
+                color: '#f3f4f6',
+                lineHeight: '1.6',
+                textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)'
+              }}
+            >
+              Delivering exceptional quality with rapid turnaround times, backed by industry-leading expertise
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-8 mb-6 sm:mb-8 px-4">
                 {/* Call Now Button - Circle with Phone Icon */}
                 <div className="relative group">
                   <a 
@@ -433,390 +409,7 @@ export default function HomeContent() {
                 </a>
               </div>
             </div>
-
-            {/* Right: Futuristic Tech Interface */}
-            <div className="relative flex justify-center lg:justify-end order-1 lg:order-2 hidden sm:flex">
-              <div className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-lg aspect-square">
-                {/* Grid Texture Background */}
-                <div 
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: `
-                      linear-gradient(rgba(59, 144, 50, 0.05) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(59, 144, 50, 0.05) 1px, transparent 1px)
-                    `,
-                    backgroundSize: '30px 30px',
-                    maskImage: 'radial-gradient(circle, black 50%, transparent 100%)'
-                  }}
-                ></div>
-                
-                {/* Radial Gradient Glow */}
-                <div 
-                  className="absolute inset-0"
-                  style={{
-                    background: `radial-gradient(circle at center, rgba(59, 144, 50, 0.1) 0%, transparent 70%)`,
-                    animation: 'pulse 4s ease-in-out infinite'
-                  }}
-                ></div>
-                
-                {/* Single Circle with Rotating Highlight */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div 
-                    className="absolute rounded-full"
-                    style={{
-                      width: '320px',
-                      height: '320px',
-                      border: `2px solid rgba(59, 144, 50, 0.3)`,
-                      boxShadow: `0 0 40px rgba(59, 144, 50, 0.15)`,
-                      position: 'relative',
-                      overflow: 'visible'
-                    }}
-                  >
-                    {/* Rotating Highlight Section */}
-                    <div 
-                      style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        animation: 'rotateHighlight 4s linear infinite'
-                      }}
-                    >
-                      <div 
-                        style={{
-                          position: 'absolute',
-                          top: '-2px',
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          width: '100px',
-                          height: '100px',
-                          background: `conic-gradient(from 0deg, transparent 0deg, ${'rgba(59, 144, 50, 0.8)'} 60deg, transparent 120deg)`,
-                          borderRadius: '50%',
-                          filter: 'blur(8px)'
-                        }}
-                      ></div>
-                      
-                      {/* Bright highlight arc */}
-                      <svg 
-                        style={{
-                          position: 'absolute',
-                          top: '-2px',
-                          left: '-2px',
-                          width: 'calc(100% + 4px)',
-                          height: 'calc(100% + 4px)',
-                          transform: 'rotate(-90deg)'
-                        }}
-                        viewBox="0 0 324 324"
-                      >
-                        <defs>
-                          <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style={{ stopColor: 'transparent', stopOpacity: 0 }} />
-                            <stop offset="50%" style={{ stopColor: '#3b9032', stopOpacity: 1 }} />
-                            <stop offset="100%" style={{ stopColor: 'transparent', stopOpacity: 0 }} />
-                          </linearGradient>
-                        </defs>
-                        <circle 
-                          cx="162" 
-                          cy="162" 
-                          r="160" 
-                          fill="none" 
-                          stroke="url(#highlightGradient)" 
-                          strokeWidth="4"
-                          strokeDasharray="251.2 753.6"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Central Shield Icon - Glassmorphism */}
-                <div 
-                  className="absolute inset-0 flex items-center justify-center"
-                  style={{ animation: 'float 6s ease-in-out infinite' }}
-                >
-                  <div 
-                    className="relative"
-                    style={{
-                      width: '180px',
-                      height: '180px',
-                      background: 'linear-gradient(135deg, rgba(59, 144, 50, 0.15) 0%, rgba(129, 192, 41, 0.08) 100%)',
-                      backdropFilter: 'blur(20px)',
-                      borderRadius: '30px',
-                      border: `1px solid ${'rgba(59, 144, 50, 0.3)'}`,
-                      boxShadow: `
-                        0 8px 32px rgba(59, 144, 50, 0.15),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.2)
-                      `,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    {/* Scan Line Effect */}
-                    <div 
-                      className="absolute inset-0 overflow-hidden"
-                      style={{ borderRadius: '30px' }}
-                    >
-                      <div 
-                        style={{
-                          position: 'absolute',
-                          width: '100%',
-                          height: '50%',
-                          background: `linear-gradient(180deg, transparent 0%, rgba(59, 144, 50, 0.15) 50%, transparent 100%)`,
-                          animation: 'scan 3s ease-in-out infinite'
-                        }}
-                      ></div>
-                    </div>
-                    
-                    {/* Shield Icon */}
-                    <svg width="100" height="100" viewBox="0 0 100 100">
-                      <defs>
-                        <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" style={{ stopColor: '#3b9032', stopOpacity: 1 }} />
-                          <stop offset="100%" style={{ stopColor: '#81c029', stopOpacity: 0.8 }} />
-                        </linearGradient>
-                        <filter id="glow">
-                          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                          <feMerge>
-                            <feMergeNode in="coloredBlur"/>
-                            <feMergeNode in="SourceGraphic"/>
-                          </feMerge>
-                        </filter>
-                      </defs>
-                      
-                      <path 
-                        d="M50 10 L80 20 L80 45 C80 65 65 80 50 90 C35 80 20 65 20 45 L20 20 Z" 
-                        fill="url(#shieldGradient)"
-                        filter="url(#glow)"
-                        opacity="0.9"
-                      />
-                      
-                      <polyline 
-                        points="35,50 45,60 65,35" 
-                        stroke='#ffffff'
-                        strokeWidth="4"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        opacity="0.9"
-                      />
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Floating Translucent Icons */}
-                {/* DNA/Molecule Icon */}
-                <div 
-                  className="absolute"
-                  style={{
-                    top: '15%',
-                    right: '10%',
-                    animation: 'fadeInOut 3s ease-in-out infinite'
-                  }}
-                >
-                  <div 
-                    style={{
-                      width: '60px',
-                      height: '60px',
-                      background: 'rgba(59, 144, 50, 0.1)',
-                      backdropFilter: 'blur(10px)',
-                      borderRadius: '15px',
-                      border: `1px solid ${'rgba(59, 144, 50, 0.3)'}`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      boxShadow: `0 4px 16px rgba(59, 144, 50, 0.1)`
-                    }}
-                  >
-                    <svg width="32" height="32" viewBox="0 0 32 32">
-                      <circle cx="8" cy="8" r="3" fill={'#3b9032'} opacity="0.8"/>
-                      <circle cx="24" cy="24" r="3" fill={'#3b9032'} opacity="0.8"/>
-                      <circle cx="8" cy="24" r="3" fill={'#3b9032'} opacity="0.8"/>
-                      <circle cx="24" cy="8" r="3" fill={'#3b9032'} opacity="0.8"/>
-                      <path d="M 8 8 Q 16 16 24 24 M 24 8 Q 16 16 8 24" 
-                            stroke={'#3b9032'} 
-                            strokeWidth="1.5" 
-                            fill="none"
-                            opacity="0.6"/>
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Lab Flask Icon */}
-                <div 
-                  className="absolute"
-                  style={{
-                    top: '55%',
-                    left: '5%',
-                    animation: 'fadeInOut 3s ease-in-out infinite 1s'
-                  }}
-                >
-                  <div 
-                    style={{
-                      width: '60px',
-                      height: '60px',
-                      background: 'rgba(59, 144, 50, 0.1)',
-                      backdropFilter: 'blur(10px)',
-                      borderRadius: '15px',
-                      border: `1px solid ${'rgba(59, 144, 50, 0.3)'}`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      boxShadow: `0 4px 16px rgba(59, 144, 50, 0.1)`
-                    }}
-                  >
-                    <svg width="28" height="28" viewBox="0 0 32 32">
-                      <path d="M12 4 L12 12 L6 24 L26 24 L20 12 L20 4 Z" 
-                            stroke={'#3b9032'} 
-                            strokeWidth="2" 
-                            fill="none"
-                            opacity="0.8"/>
-                      <rect x="12" y="18" width="8" height="6" 
-                            fill={'#3b9032'} 
-                            opacity="0.5"/>
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Certificate/Quality Icon */}
-                <div 
-                  className="absolute"
-                  style={{
-                    bottom: '15%',
-                    right: '12%',
-                    animation: 'fadeInOut 3s ease-in-out infinite 2s'
-                  }}
-                >
-                  <div 
-                    style={{
-                      width: '60px',
-                      height: '60px',
-                      background: 'rgba(59, 144, 50, 0.1)',
-                      backdropFilter: 'blur(10px)',
-                      borderRadius: '15px',
-                      border: `1px solid ${'rgba(59, 144, 50, 0.3)'}`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      boxShadow: `0 4px 16px rgba(59, 144, 50, 0.1)`
-                    }}
-                  >
-                    <svg width="28" height="28" viewBox="0 0 32 32">
-                      <circle cx="16" cy="12" r="8" 
-                              stroke={'#3b9032'} 
-                              strokeWidth="2" 
-                              fill="none"
-                              opacity="0.8"/>
-                      <path d="M16 20 L16 28 M12 24 L16 28 L20 24" 
-                            stroke={'#3b9032'} 
-                            strokeWidth="2" 
-                            fill="none"
-                            opacity="0.8"/>
-                      <circle cx="16" cy="12" r="3" 
-                              fill={'#3b9032'} 
-                              opacity="0.6"/>
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Pill/Capsule Icon */}
-                <div 
-                  className="absolute"
-                  style={{
-                    top: '25%',
-                    left: '12%',
-                    animation: 'fadeInOut 3s ease-in-out infinite 0.5s'
-                  }}
-                >
-                  <div 
-                    style={{
-                      width: '50px',
-                      height: '50px',
-                      background: 'rgba(59, 144, 50, 0.1)',
-                      backdropFilter: 'blur(10px)',
-                      borderRadius: '12px',
-                      border: `1px solid ${'rgba(59, 144, 50, 0.3)'}`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      boxShadow: `0 4px 16px rgba(59, 144, 50, 0.1)`
-                    }}
-                  >
-                    <div 
-                      style={{
-                        width: '24px',
-                        height: '12px',
-                        borderRadius: '20px',
-                        background: `linear-gradient(90deg, ${'#3b9032'} 0%, ${'#81c029'} 100%)`,
-                        opacity: 0.8
-                      }}
-                    ></div>
-                  </div>
-                </div>
-                
-                {/* Graph/Analytics Icon */}
-                <div 
-                  className="absolute"
-                  style={{
-                    bottom: '28%',
-                    left: '18%',
-                    animation: 'fadeInOut 3s ease-in-out infinite 1.5s'
-                  }}
-                >
-                  <div 
-                    style={{
-                      width: '50px',
-                      height: '50px',
-                      background: 'rgba(59, 144, 50, 0.1)',
-                      backdropFilter: 'blur(10px)',
-                      borderRadius: '12px',
-                      border: `1px solid ${'rgba(59, 144, 50, 0.3)'}`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      boxShadow: `0 4px 16px rgba(59, 144, 50, 0.1)`
-                    }}
-                  >
-                    <svg width="24" height="24" viewBox="0 0 32 32">
-                      <polyline points="4,24 10,18 16,20 22,12 28,14" 
-                                stroke={'#3b9032'} 
-                                strokeWidth="2" 
-                                fill="none"
-                                opacity="0.8"/>
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Tech Corner Accents */}
-                <div 
-                  className="absolute"
-                  style={{
-                    top: '10%',
-                    left: '10%',
-                    width: '30px',
-                    height: '30px',
-                    borderTop: `2px solid ${'rgba(59, 144, 50, 0.4)'}`,
-                    borderLeft: `2px solid ${'rgba(59, 144, 50, 0.4)'}`,
-                    opacity: 0.6
-                  }}
-                ></div>
-                
-                <div 
-                  className="absolute"
-                  style={{
-                    bottom: '10%',
-                    right: '10%',
-                    width: '30px',
-                    height: '30px',
-                    borderBottom: `2px solid ${'rgba(59, 144, 50, 0.4)'}`,
-                    borderRight: `2px solid ${'rgba(59, 144, 50, 0.4)'}`,
-                    opacity: 0.6
-                  }}
-                ></div>
-              </div>
-            </div>
           </div>
-        </div>
         
         {/* Gradient Fade for Smooth Transition */}
         <div 
@@ -827,8 +420,11 @@ export default function HomeContent() {
         ></div>
       </div>
 
+      {/* Spacer to push content below hero */}
+      <div style={{ height: '100vh' }}></div>
+
       {/* Built for Supplement Brands Section */}
-      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden">
+      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden" style={{ backgroundColor: '#ffffff', zIndex: 10 }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* Left: Interactive Product Display - Desktop Only */}
@@ -1239,7 +835,7 @@ export default function HomeContent() {
       </div>
 
       {/* Fast but Careful Section */}
-      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
+      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden" style={{ backgroundColor: '#ffffff', zIndex: 10 }}>
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div 
@@ -1344,7 +940,7 @@ export default function HomeContent() {
                     className="text-sm"
                     style={{ color: '#6b7280' }}
                   >
-                    Up to 10,000 units/hour with precision filling
+                    Up to 15,000 units/hour with precision filling
                   </p>
                 </div>
               </div>
@@ -1392,7 +988,7 @@ export default function HomeContent() {
                     className="text-sm"
                     style={{ color: '#6b7280' }}
                   >
-                    Up to 4,000 units/hour with flexible batch sizing
+                    Up to 6,000 units/hour with flexible batch sizing
                   </p>
                 </div>
               </div>
@@ -1445,7 +1041,7 @@ export default function HomeContent() {
                 </div>
               </div>
 
-              {/* Machine Card 4 - VFFS */}
+              {/* Machine Card 4 - HFFS */}
               <div 
                 className="group relative overflow-hidden rounded-2xl transition-all duration-500 hover:scale-105 animate-on-scroll"
                 style={{
@@ -1482,7 +1078,7 @@ export default function HomeContent() {
                     className="text-base font-semibold mb-2"
                     style={{ color: '#161616' }}
                   >
-                    VFFS Machine
+                    HFFS Machine
                   </h3>
                   <p 
                     className="text-sm"
@@ -1593,12 +1189,6 @@ export default function HomeContent() {
 
           {/* Bottom CTA */}
           <div className="text-center animate-on-scroll mt-12">
-            <p 
-              className="text-base sm:text-lg mb-6"
-              style={{ color: '#6b7280' }}
-            >
-              See all our state-of-the-art equipment and capabilities
-            </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a 
                 href="/manufacturer"
@@ -1631,7 +1221,7 @@ export default function HomeContent() {
       </div>
 
       {/* Trusted Partners & Testimonials Section */}
-      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden">
+      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden" style={{ backgroundColor: '#ffffff', zIndex: 10 }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12 sm:mb-16 lg:mb-20 animate-on-scroll">
@@ -1675,8 +1265,8 @@ export default function HomeContent() {
             {(() => {
               const testimonials = [
                 {
-                  name: "Trace Minerals Team",
-                  role: "Partner",
+                  name: "Justin",
+                  role: "VP Product Development",
                   company: "Trace Minerals",
                   review: "Apex Nutra has been a reliable partner with Trace Minerals in fulfilling stick pack and pack-out needs. They always hit due dates and when urgency is needed, always find a way to pull through! I highly recommend Apex for any project that requires a high level of quality and customer service!",
                   rating: 5,
@@ -1979,7 +1569,7 @@ export default function HomeContent() {
                               >
                                 {testimonial.name}
                               </h4>
-                              {!testimonial.highlighted && testimonial.name !== "CLS Manufacturing" && (
+                              {testimonial.name !== "CLS Manufacturing" && (
                                 <>
                                   <p 
                                     className="text-xs truncate"
@@ -2048,7 +1638,7 @@ export default function HomeContent() {
       </div>
 
       {/* Stay in the Loop Section */}
-      <div className="relative py-8 sm:py-12 lg:py-16">
+      <div className="relative py-8 sm:py-12 lg:py-16" style={{ backgroundColor: '#ffffff', zIndex: 10 }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-3"
@@ -2146,7 +1736,7 @@ export default function HomeContent() {
       </div>
 
       {/* Footer Section */}
-      <footer className="relative py-8 sm:py-12 lg:py-16 border-t" style={{ borderColor: 'rgba(59, 144, 50, 0.1)' }}>
+      <footer className="relative py-8 sm:py-12 lg:py-16 border-t" style={{ backgroundColor: '#ffffff', borderColor: 'rgba(59, 144, 50, 0.1)', zIndex: 10 }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Left Column - Company Info */}

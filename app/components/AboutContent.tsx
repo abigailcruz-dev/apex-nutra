@@ -2,225 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Team Carousel Component
-function TeamCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  
-  const teamMembers = [
-    { name: 'Joseph Cronen', role: 'Quality Manager', gender: 'male' },
-    { name: 'Lili Flores', role: 'Production Manager', gender: 'female' },
-    { name: 'Trevor Greenwell', role: 'Continues Improvement', gender: 'female' },
-    { name: 'Manuel Vasquez', role: 'Maintenance/Engineering', gender: 'male' },
-    { name: 'Leslie Calles', role: 'Packet/Kitting', gender: 'female' }
-  ];
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % teamMembers.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + teamMembers.length) % teamMembers.length);
-  };
-
-  const getCardStyle = (index: number) => {
-    const totalCards = teamMembers.length;
-    
-    // Calculate normalized position (0 to totalCards-1) where each card moves through the sequence
-    let normalizedPosition = (index - currentIndex + totalCards) % totalCards;
-    
-    // Define all positions in the rotation sequence
-    const positions = [
-      // 0 - Center front
-      { left: '50%', top: '50%', scale: 1, zIndex: 10, blur: 0, opacity: 1 },
-
-      // 1 - Right side
-      { left: '75%', top: '55%', scale: 0.8, zIndex: 5, blur: 2, opacity: 0.85 },
-
-      // 2 - Back center
-      { left: '50%', top: '65%', scale: 0.6, zIndex: 3, blur: 6, opacity: 0.65 },
-
-      // 3 - Left side
-      { left: '25%', top: '55%', scale: 0.8, zIndex: 5, blur: 2, opacity: 0.85 },
-
-      // 4 - Hidden (far back)
-      { left: '50%', top: '80%', scale: 0.4, zIndex: 1, blur: 10, opacity: 0 },
-    ];
-
-    
-    const pos = positions[normalizedPosition];
-    
-    return {
-      left: pos.left,
-      top: pos.top,
-      transform: `translate(-50%, -50%) scale(${pos.scale})`,
-      opacity: pos.opacity,
-      zIndex: pos.zIndex,
-      filter: `blur(${pos.blur}px)`,
-      pointerEvents: normalizedPosition === 0 ? 'auto' as const : 'none' as const
-    };
-  };
-
-  return (
-    <div className="relative mb-0 h-[300px] sm:h-[350px] lg:h-[400px]">
-      {/* Carousel Container */}
-      <div className="relative w-full h-full flex items-center justify-center" style={{ perspective: '1000px' }}>
-        {teamMembers.map((member, index) => {
-          const normalizedPosition = (index - currentIndex + teamMembers.length) % teamMembers.length;
-          const isCenter = normalizedPosition === 0;
-          
-          return (
-          <div
-            key={index}
-            className="absolute w-[180px] h-[230px] sm:w-[220px] sm:h-[280px] lg:w-[280px] lg:h-[340px]"
-            style={{
-              ...getCardStyle(index),
-              transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)'
-            }}
-          >
-            {/* Modern Card Design */}
-            <div 
-              className="w-full h-full rounded-3xl overflow-hidden"
-              style={{
-                background: 'linear-gradient(135deg, #ffffff, #f3f4f6)',
-                border: isCenter 
-                  ? `2px solid #3b9032` 
-                  : `1px solid rgba(59, 144, 50, 0.3)`,
-                boxShadow: isCenter 
-                  ? '0 20px 60px rgba(59, 144, 50, 0.3)' 
-                  : '0 10px 30px rgba(0, 0, 0, 0.1)'
-              }}
-            >
-              {/* Top accent bar */}
-              <div 
-                className="h-1 w-full"
-                style={{
-                  background: 'linear-gradient(90deg, #81c029, #3b9032)'
-                }}
-              />
-              
-              {/* Card content */}
-              <div className="p-3 sm:p-4 lg:p-6 flex flex-col items-center justify-center h-full">
-                {/* Avatar/Profile Icon */}
-                <div 
-                  className="w-16 h-16 sm:w-20 sm:h-20 lg:w-32 lg:h-32 rounded-full flex items-center justify-center mb-2 sm:mb-3 lg:mb-4"
-                  style={{
-                    background: isCenter
-                      ? 'linear-gradient(135deg, #3b9032, #81c029)'
-                      : 'rgba(59, 144, 50, 0.15)',
-                    border: isCenter ? 'none' : '2px solid rgba(59, 144, 50, 0.3)'
-                  }}
-                >
-                  {/* Profile Icon SVG */}
-                  <svg 
-                    className="w-10 h-10 sm:w-12 sm:h-12 lg:w-20 lg:h-20"
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    stroke={isCenter ? '#ffffff' : '#3b9032'}
-                    strokeWidth="1.5"
-                  >
-                    {member.gender === 'female' ? (
-                      <>
-                        {/* Female profile icon */}
-                        <circle cx="12" cy="8" r="4" fill={isCenter ? '#ffffff' : '#3b9032'} />
-                        <path d="M4 20c0-4 3-6 8-6s8 2 8 6" strokeLinecap="round" />
-                      </>
-                    ) : (
-                      <>
-                        {/* Male profile icon */}
-                        <circle cx="12" cy="8" r="4" fill={isCenter ? '#ffffff' : '#3b9032'} />
-                        <path d="M4 20c0-4 3-6 8-6s8 2 8 6" strokeLinecap="round" />
-                      </>
-                    )}
-                  </svg>
-                </div>
-                
-                {/* Name */}
-                <h3 
-                  className="text-xs sm:text-sm lg:text-xl font-bold mb-1 text-center leading-tight px-1 sm:px-2"
-                  style={{ color: '#161616' }}
-                >
-                  {member.name}
-                </h3>
-                
-                {/* Role with icon */}
-                <div className="flex items-center gap-1 sm:gap-1.5 lg:gap-2 mb-1 sm:mb-2">
-                  <div 
-                    className="w-0.5 h-0.5 sm:w-1 sm:h-1 rounded-full"
-                    style={{ background: '#3b9032' }}
-                  />
-                  <p 
-                    className="text-[10px] sm:text-xs lg:text-sm font-medium text-center leading-tight px-0.5 sm:px-1"
-                    style={{ color: '#6b7280' }}
-                  >
-                    {member.role}
-                  </p>
-                  <div 
-                    className="w-0.5 h-0.5 sm:w-1 sm:h-1 rounded-full"
-                    style={{ background: '#3b9032' }}
-                  />
-                </div>
-                
-              </div>
-            </div>
-          </div>
-          );
-        })}
-      </div>
-
-      {/* Navigation Buttons */}
-      <div className="absolute -bottom-4 sm:-bottom-6 left-1/2 -translate-x-1/2 flex gap-4">
-        <button
-          onClick={prevSlide}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-          style={{
-            background: 'rgba(129, 192, 41, 0.2)',
-            border: '2px solid #81c029',
-            color: '#81c029'
-          }}
-          aria-label="Previous team member"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="sm:w-5 sm:h-5">
-            <path d="M15 18l-6-6 6-6"/>
-          </svg>
-        </button>
-        
-        <button
-          onClick={nextSlide}
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-          style={{
-            background: 'rgba(129, 192, 41, 0.2)',
-            border: '2px solid #81c029',
-            color: '#81c029'
-          }}
-          aria-label="Next team member"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="sm:w-5 sm:h-5">
-            <path d="M9 18l6-6-6-6"/>
-          </svg>
-        </button>
-      </div>
-
-      {/* Indicators */}
-      <div className="absolute bottom-10 sm:bottom-12 left-1/2 -translate-x-1/2 flex gap-2">
-        {teamMembers.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className="transition-all duration-300"
-            style={{
-              width: index === currentIndex ? '24px' : '8px',
-              height: '8px',
-              borderRadius: '4px',
-              background: index === currentIndex ? '#81c029' : 'rgba(129, 192, 41, 0.3)'
-            }}
-            aria-label={`Go to team member ${index + 1}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function AboutContent() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [indicatorPosition, setIndicatorPosition] = useState(0);
@@ -2074,9 +1855,97 @@ export default function AboutContent() {
             </p>
           </div>
 
-          {/* Team Carousel - Layered 3D Cards */}
+          {/* Team Grid */}
           <div className={`section-animate animate-scaleIn stagger-2 ${visibleSections.has('team') ? 'visible' : ''}`}>
-            <TeamCarousel />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 max-w-7xl mx-auto">
+              {[
+                { name: 'Joseph Cronen', role: 'Quality Manager', gender: 'male' },
+                { name: 'Lili Flores', role: 'Production Manager', gender: 'female' },
+                { name: 'Trevor Greenwell', role: 'Continues Improvement', gender: 'female' },
+                { name: 'Manuel Vasquez', role: 'Maintenance/Engineering', gender: 'male' },
+                { name: 'Leslie Calles', role: 'Packet/Kitting', gender: 'female' }
+              ].map((member, index) => (
+                <div
+                  key={index}
+                  className="group relative"
+                >
+                  <div 
+                    className="relative h-full rounded-3xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                    style={{
+                      background: 'linear-gradient(135deg, #ffffff, #f3f4f6)',
+                      border: `2px solid rgba(59, 144, 50, 0.3)`,
+                      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)'
+                    }}
+                  >
+                    {/* Top accent bar */}
+                    <div 
+                      className="h-1 w-full"
+                      style={{
+                        background: 'linear-gradient(90deg, #81c029, #3b9032)'
+                      }}
+                    />
+                    
+                    {/* Card content */}
+                    <div className="p-6 flex flex-col items-center justify-center min-h-[280px]">
+                      {/* Avatar/Profile Icon */}
+                      <div 
+                        className="w-24 h-24 lg:w-28 lg:h-28 rounded-full flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
+                        style={{
+                          background: 'linear-gradient(135deg, #3b9032, #81c029)',
+                          boxShadow: '0 4px 20px rgba(59, 144, 50, 0.3)'
+                        }}
+                      >
+                        {/* Profile Icon SVG */}
+                        <svg 
+                          className="w-14 h-14 lg:w-16 lg:h-16"
+                          viewBox="0 0 24 24" 
+                          fill="none" 
+                          stroke="#ffffff"
+                          strokeWidth="1.5"
+                        >
+                          <circle cx="12" cy="8" r="4" fill="#ffffff" />
+                          <path d="M4 20c0-4 3-6 8-6s8 2 8 6" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                      
+                      {/* Name */}
+                      <h3 
+                        className="text-base lg:text-lg font-bold mb-2 text-center leading-tight px-2"
+                        style={{ color: '#161616' }}
+                      >
+                        {member.name}
+                      </h3>
+                      
+                      {/* Role with decorative dots */}
+                      <div className="flex items-center gap-2 mb-2">
+                        <div 
+                          className="w-1 h-1 rounded-full"
+                          style={{ background: '#3b9032' }}
+                        />
+                        <p 
+                          className="text-xs lg:text-sm font-medium text-center leading-tight px-1"
+                          style={{ color: '#6b7280' }}
+                        >
+                          {member.role}
+                        </p>
+                        <div 
+                          className="w-1 h-1 rounded-full"
+                          style={{ background: '#3b9032' }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Hover gradient effect */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(59, 144, 50, 0.05) 0%, transparent 100%)'
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

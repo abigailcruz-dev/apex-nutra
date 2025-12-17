@@ -844,7 +844,7 @@ export default function ManufacturerContent() {
                           className="text-base leading-relaxed mb-6"
                           style={{ color: '#6b7280' }}
                         >
-                          High-volume production capability with precision filling and sealing technology, producing up to 10,000 units per hour with exceptional accuracy and reliability.
+                          High-volume production capability with precision filling and sealing technology, producing up to 15,000 units per hour with exceptional accuracy and reliability.
                         </p>
 
                         <div className="space-y-4">
@@ -861,7 +861,7 @@ export default function ManufacturerContent() {
                             </div>
                             <div>
                               <h4 className="font-semibold mb-1" style={{ color: '#161616' }}>
-                                Output: Up to 10,000 units/hour
+                                Output: Up to 15,000 units/hour
                               </h4>
                               <p className="text-sm" style={{ color: '#6b7280' }}>
                                 Maximum production capacity for large-scale operations
@@ -961,7 +961,7 @@ export default function ManufacturerContent() {
                     className="text-base lg:text-lg leading-relaxed mb-8"
                     style={{ color: '#6b7280' }}
                   >
-                    High-volume production capability with precision filling and sealing technology, producing up to 10,000 units per hour with exceptional accuracy and reliability.
+                    High-volume production capability with precision filling and sealing technology, producing up to 15,000 units per hour with exceptional accuracy and reliability.
                   </p>
 
                   <div className="space-y-4">
@@ -978,7 +978,7 @@ export default function ManufacturerContent() {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1" style={{ color: '#161616' }}>
-                          Output: Up to 10,000 units/hour
+                          Output: Up to 15,000 units/hour
                         </h4>
                         <p className="text-sm" style={{ color: '#6b7280' }}>
                           Maximum production capacity for large-scale operations
@@ -1134,7 +1134,7 @@ export default function ManufacturerContent() {
                             </div>
                             <div>
                               <h4 className="font-semibold mb-1" style={{ color: '#161616' }}>
-                                Output: Up to 4,000 units/hour
+                                Output: Up to 6,000 units/hour
                               </h4>
                               <p className="text-sm" style={{ color: '#6b7280' }}>
                                 Ideal production capacity for mid-sized operations
@@ -1232,7 +1232,7 @@ export default function ManufacturerContent() {
                       </div>
                       <div>
                         <h4 className="font-semibold mb-1" style={{ color: '#161616' }}>
-                          Output: Up to 4,000 units/hour
+                          Output: Up to 6,000 units/hour
                         </h4>
                         <p className="text-sm" style={{ color: '#6b7280' }}>
                           Ideal production capacity for mid-sized operations
@@ -1578,7 +1578,7 @@ export default function ManufacturerContent() {
               </div>
             </div>
 
-            {/* Vertical Form-Film-Seal (VFFS) Packaging Machine */}
+            {/* Vertical Form-Film-Seal (HFFS) Packaging Machine */}
             <div 
               className="group relative overflow-hidden rounded-3xl transition-all duration-500"
               style={{
@@ -1623,7 +1623,7 @@ export default function ManufacturerContent() {
                       className="text-2xl font-bold mb-4"
                       style={{ color: '#161616' }}
                     >
-                      Vertical Form-Film-Seal (VFFS) Packaging Machine
+                      Horizontal Form-Film-Seal (HFFS) Packaging Machine
                     </h3>
 
                     <button
@@ -1663,7 +1663,7 @@ export default function ManufacturerContent() {
                           className="text-base leading-relaxed mb-6"
                           style={{ color: '#6b7280' }}
                         >
-                          Integrated vertical packaging system that forms, fills, and seals packages from roll stock film, providing cost-effective and efficient packaging solutions.
+                          Integrated horizontal packaging system that forms, fills, and seals packages from roll stock film, providing cost-effective and efficient packaging solutions.
                         </p>
 
                         <div className="space-y-4">
@@ -1754,7 +1754,7 @@ export default function ManufacturerContent() {
                     className="text-3xl lg:text-4xl font-bold mb-4"
                     style={{ color: '#161616' }}
                   >
-                    Vertical Form-Film-Seal (VFFS) Packaging Machine
+                    Horizontal Form-Film-Seal (HFFS) Packaging Machine
                   </h3>
                   
                   <p 
