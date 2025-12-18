@@ -69,9 +69,11 @@ export default function AboutContent() {
 
   // Intersection Observer for scroll animations
   useEffect(() => {
+    // Use different settings for mobile to prevent premature exit animations
+    const isMobile = window.innerWidth < 768;
     const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '-50px 0px -50px 0px'
+      threshold: isMobile ? 0.05 : 0.15,
+      rootMargin: isMobile ? '0px 0px -100px 0px' : '-50px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {

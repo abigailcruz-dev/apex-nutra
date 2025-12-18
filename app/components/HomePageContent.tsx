@@ -10,9 +10,11 @@ export default function HomeContent() {
   const [isPhoneExpanded, setIsPhoneExpanded] = useState(false);
 
   useEffect(() => {
+    // Use different settings for mobile to prevent premature exit animations
+    const isMobile = window.innerWidth < 768;
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
+      threshold: isMobile ? 0.05 : 0.1,
+      rootMargin: isMobile ? '0px 0px -100px 0px' : '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
