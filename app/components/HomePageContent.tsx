@@ -1220,6 +1220,73 @@ export default function HomeContent() {
         </div>
       </div>
 
+      {/* Letter of Reference Section */}
+      <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden" style={{ backgroundColor: '#ffffff', zIndex: 10 }}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-8 sm:mb-12 animate-on-scroll">
+            <h2 
+              className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6"
+              style={{ color: '#161616' }}
+            >
+              Letter of Reference for{' '}
+              <span 
+                style={{
+                  background: 'linear-gradient(90deg, #3b9032 0%, #81c029 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Mr. Kim Wybrow
+              </span>
+              , Founder of Apex Nutra LLC.
+            </h2>
+            
+            {/* Quote Card */}
+            <div 
+              className="relative rounded-2xl p-6 sm:p-8 mb-6 animate-on-scroll"
+              style={{
+                backgroundColor: '#ffffff',
+                border: `2px solid ${'rgba(59, 144, 50, 0.2)'}`,
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)'
+              }}
+            >
+              {/* Quote Icon */}
+              <div 
+                className="absolute top-4 left-4 opacity-10"
+              >
+                <svg width="48" height="48" viewBox="0 0 48 48" fill={'#3b9032'}>
+                  <path d="M12 34h6l4-8V14H10v12h6zm16 0h6l4-8V14H26v12h6z" opacity="0.3"/>
+                </svg>
+              </div>
+              
+              <p 
+                className="text-base sm:text-lg leading-relaxed italic relative z-10"
+                style={{ color: '#4b5563' }}
+              >
+                "Kim proved to be a natural mechanical engineer with a strong talent for process development... He is a hands-on owner who genuinely cares about his team and operates his business with honesty, transparency, and straightforward integrity."
+              </p>
+            </div>
+
+            {/* CTA Button */}
+            <a 
+              href="/about#reference"
+              className="inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              style={{
+                background: `linear-gradient(90deg, ${'#3b9032'}, ${'#81c029'})`,
+                color: 'white'
+              }}
+            >
+              Read the Full Letter
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 3l7 7-7 7M3 10h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Trusted Partners & Testimonials Section */}
       <div className="relative py-8 sm:py-12 lg:py-16 overflow-hidden" style={{ backgroundColor: '#ffffff', zIndex: 10 }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

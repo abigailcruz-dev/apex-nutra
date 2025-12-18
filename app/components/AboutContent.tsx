@@ -10,6 +10,19 @@ export default function AboutContent() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set(['history']));
   const [activeTab, setActiveTab] = useState<'mission' | 'vision'>('mission');
 
+  // Handle hash anchor scrolling
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       if (timelineRef.current) {
@@ -1808,6 +1821,106 @@ export default function AboutContent() {
         </div>
       </div>
 
+      {/* Letter of Reference Section */}
+      <div 
+        id="reference"
+        data-section="reference"
+        className="relative py-8 sm:py-12 lg:py-16 overflow-hidden"
+        style={{ backgroundColor: '#ffffff' }}
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className={`text-center mb-8 sm:mb-12 section-animate animate-fadeInDown stagger-1 ${visibleSections.has('reference') ? 'visible' : ''}`}>
+            <span 
+              className="inline-block text-sm font-semibold tracking-wider uppercase px-4 py-2 rounded-full mb-6"
+              style={{ 
+                color: '#3b9032',
+                backgroundColor: 'rgba(59, 144, 50, 0.1)'
+              }}
+            >
+              Letter of Reference
+            </span>
+
+            <h2 
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
+              style={{ color: '#161616' }}
+            >
+              For{' '}
+              <span 
+                style={{
+                  backgroundImage: 'linear-gradient(90deg, #3b9032 0%, #81c029 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}
+              >
+                Mr. Kim Wybrow
+              </span>
+            </h2>
+            <p 
+              className="text-lg"
+              style={{ color: '#6b7280' }}
+            >
+              Founder of Apex Nutra LLC
+            </p>
+          </div>
+
+          {/* Letter Content */}
+          <div className={`section-animate animate-fadeInUp stagger-2 ${visibleSections.has('reference') ? 'visible' : ''}`}>
+            <div 
+              className="relative rounded-2xl p-6 sm:p-8 lg:p-10"
+              style={{
+                backgroundColor: '#ffffff',
+                border: `2px solid ${'rgba(59, 144, 50, 0.2)'}`,
+                boxShadow: '0 8px 30px rgba(0, 0, 0, 0.08)'
+              }}
+            >
+              {/* Quote Icon */}
+              <div 
+                className="absolute top-6 left-6 opacity-10"
+              >
+                <svg width="64" height="64" viewBox="0 0 48 48" fill={'#3b9032'}>
+                  <path d="M12 34h6l4-8V14H10v12h6zm16 0h6l4-8V14H26v12h6z" opacity="0.3"/>
+                </svg>
+              </div>
+
+              {/* Letter Text */}
+              <div 
+                className="relative z-10 space-y-6 text-base sm:text-lg leading-relaxed"
+                style={{ color: '#4b5563' }}
+              >
+                <p className="font-semibold italic" style={{ color: '#161616' }}>
+                  I am pleased to provide this letter of reference for Mr. Kim Wybrow, Founder of Apex Nutra LLC.
+                </p>
+
+                <p>
+                  Kim began working with me at Global Health Industries around 2010, initially joining our team in a maintenance role. From the very beginning, his work ethic, mechanical aptitude, and problem-solving mindset set him apart. Through dedication and natural ability, he steadily advanced within the company and ultimately became Director.
+                </p>
+
+                <p>
+                  Kim proved to be a natural mechanical engineer with a strong talent for process development. He played a key role in supporting both production and R&D by improving manufacturing techniques and contributing to the development of new products and technologies. He consistently sought out knowledge, attending nearly every industry training course available, and he made a point of bringing that expertise back to our production and development teams—raising the overall capability of the organization.
+                </p>
+
+                <p>
+                  Today, Kim has built Apex Nutra into his own contract manufacturing company, and it has been incredibly rewarding to watch his personal growth and the development of his own legacy. He is a hands-on owner who genuinely cares about his team and operates his business with honesty, transparency, and straightforward integrity.
+                </p>
+
+                <p>
+                  I have great respect for Kim as both a professional and a person, and I sincerely wish him continued success in the future with Apex Nutra.
+                </p>
+              </div>
+
+              {/* Decorative Line */}
+              <div 
+                className="mt-8 w-24 h-1"
+                style={{
+                  background: 'linear-gradient(90deg, #3b9032, #81c029)'
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Team Section */}
       <div 
