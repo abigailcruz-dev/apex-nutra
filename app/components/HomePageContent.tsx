@@ -328,7 +328,7 @@ export default function HomeContent() {
                 textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)'
               }}
             >
-              Delivering exceptional quality with rapid turnaround times, backed by industry-leading expertise
+              High-quality results, rapid turnaround, expert execution.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-8 mb-6 sm:mb-8 px-4">
                 {/* Call Now Button - Circle with Phone Icon */}
