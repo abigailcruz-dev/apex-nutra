@@ -399,8 +399,8 @@ export default function HomeContent() {
                   href="/contact"
                   className="rounded-full font-semibold text-sm sm:text-base transition-all duration-300 hover:scale-105 flex items-center justify-center"
                   style={{
-                    border: `2px solid #3b9032`,
-                    color: '#3b9032',
+                    border: `2px solid #FFFFFF`,
+                    color: '#FFFFFF',
                     backgroundColor: 'rgba(129, 192, 41, 0.1)',
                     height: 'clamp(48px, 10vw, 56px)',
                     paddingLeft: 'clamp(20px, 4vw, 32px)',

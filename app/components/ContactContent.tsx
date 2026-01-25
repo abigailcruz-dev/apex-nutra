@@ -20,19 +20,23 @@ export default function ContactContent() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
+    const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+    if (!ACCESS_KEY) {
+      setSubmitStatus({
+        type: "error",
+        message: "Form service is not configured. Please try again later.",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // Using Web3Forms - Get your access key from: https://web3forms.com
-      // Replace with your own key or use environment variable
-      const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "abc482a8-6c30-46ec-87f8-5a9e8d2c2150";
-      
-      // If you don't have a key yet, Web3Forms provides a demo key for testing:
-      // Demo key (replace with your own): "access_key_goes_here"
-      
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify({
           access_key: ACCESS_KEY,
@@ -52,7 +56,7 @@ export default function ContactContent() {
           type: "success",
           message: "Thank you for contacting us! We'll get back to you soon.",
         });
-        // Reset form
+
         setFormData({
           name: "",
           email: "",
@@ -62,18 +66,19 @@ export default function ContactContent() {
       } else {
         setSubmitStatus({
           type: "error",
-          message: "Failed to send message. Please try again.",
+          message: data.message || "Failed to send message. Please try again.",
         });
       }
     } catch (error) {
       setSubmitStatus({
         type: "error",
-        message: "Network error. Please check your connection and try again.",
+        message: "Network error. Please try again later.",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
