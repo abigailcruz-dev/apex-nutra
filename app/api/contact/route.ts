@@ -26,7 +26,15 @@ export async function POST(req: NextRequest) {
       }),
     });
 
-    const data = await response.json();
+    const text = await response.text();
+    console.log("Web3Forms raw response:", text);
+    
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      return NextResponse.json({ success: false, message: "Invalid response from form service." });
+    }
 
     if (data.success) {
       return NextResponse.json({ success: true, message: "Message sent!" });
