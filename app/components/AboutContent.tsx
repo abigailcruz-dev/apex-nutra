@@ -2387,8 +2387,8 @@ export default function AboutContent() {
                 }}
               >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke={'#3b9032'} strokeWidth="2.5" strokeLinecap="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 6v6l4 2"/>
+                  <path d="M9 12l2 2 4-4"/>
+                  <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
                 </svg>
               </div>
 
