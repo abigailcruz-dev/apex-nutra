@@ -4,40 +4,34 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, subject, message } = body;
 
-    const FORMSPREE_ID = process.env.FORMSPREE_ID;
+    const ACCESS_KEY = process.env.WEB3FORMS_KEY;
 
-    if (!FORMSPREE_ID) {
-      console.error("FORMSPREE_ID is not configured");
+    if (!ACCESS_KEY) {
       return NextResponse.json(
         { success: false, message: "Form service not configured." },
         { status: 500 }
       );
     }
 
-    const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+    const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
       body: JSON.stringify({
-        name,
-        email,
-        subject,
-        message,
-        _replyto: email,
+        access_key: ACCESS_KEY,
+        ...body,
       }),
     });
 
     const data = await response.json();
 
-    if (response.ok) {
+    if (data.success) {
       return NextResponse.json({ success: true, message: "Message sent!" });
     } else {
-      console.error("Formspree error:", data);
-      return NextResponse.json({ success: false, message: data.error || "Failed to send message." });
+      return NextResponse.json({ success: false, message: data.message || "Failed to send message." });
     }
   } catch (error: any) {
     console.error("Contact form error:", error?.message || error);
