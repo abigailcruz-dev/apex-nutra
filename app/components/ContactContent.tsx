@@ -21,18 +21,18 @@ const handleSubmit = async (e: React.FormEvent) => {
   setSubmitStatus({ type: null, message: "" });
 
   try {
-    const response = await fetch("/api/contact", {
+    const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
+        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
         name: formData.name,
         email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        from_name: formData.name,
-        replyto: formData.email,
       }),
     });
 
@@ -42,7 +42,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       setSubmitStatus({ type: "success", message: "Thank you! We'll get back to you soon." });
       setFormData({ name: "", email: "", subject: "", message: "" });
     } else {
-      setSubmitStatus({ type: "error", message: data.message });
+      setSubmitStatus({ type: "error", message: data.message || "Failed to send message." });
     }
   } catch (error) {
     setSubmitStatus({ type: "error", message: "Network error. Please try again later." });
