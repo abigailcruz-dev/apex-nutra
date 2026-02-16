@@ -15,69 +15,42 @@ export default function ContactContent() {
     message: string;
   }>({ type: null, message: "" });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: "" });
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitStatus({ type: null, message: "" });
 
-    const ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+  try {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        from_name: formData.name,
+        replyto: formData.email,
+      }),
+    });
 
-    if (!ACCESS_KEY) {
-      setSubmitStatus({
-        type: "error",
-        message: "Form service is not configured. Please try again later.",
-      });
-      setIsSubmitting(false);
-      return;
+    const data = await response.json();
+
+    if (data.success) {
+      setSubmitStatus({ type: "success", message: "Thank you! We'll get back to you soon." });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } else {
+      setSubmitStatus({ type: "error", message: data.message });
     }
+  } catch (error) {
+    setSubmitStatus({ type: "error", message: "Network error. Please try again later." });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: ACCESS_KEY,
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          from_name: formData.name,
-          replyto: formData.email,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setSubmitStatus({
-          type: "success",
-          message: "Thank you for contacting us! We'll get back to you soon.",
-        });
-
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        setSubmitStatus({
-          type: "error",
-          message: data.message || "Failed to send message. Please try again.",
-        });
-      }
-    } catch (error) {
-      setSubmitStatus({
-        type: "error",
-        message: "Network error. Please try again later.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
