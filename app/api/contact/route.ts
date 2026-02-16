@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
     const { data, error } = await resend.emails.send({
       from: "Apex Nutra Contact <onboarding@resend.dev>",
-      to: "cruzabicanedo@gmail.com",
+      to: "kwybrow@apexnutraus.com",
       replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `
