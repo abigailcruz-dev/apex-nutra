@@ -2368,12 +2368,12 @@ export default function AboutContent() {
               </div>
             </div>
 
-            {/* NSF Certification Card - In Progress */}
+            {/* NSF Certification Card - Active */}
             <div 
               className="group relative rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105 col-span-2 lg:col-span-1 max-w-sm mx-auto lg:max-w-none"
               style={{
                 backgroundColor: 'rgba(59, 144, 50, 0.03)',
-                border: `1px dashed ${'rgba(59, 144, 50, 0.25)'}`,
+                border: `1px solid ${'rgba(59, 144, 50, 0.1)'}`,
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
               }}
             >
@@ -2382,8 +2382,8 @@ export default function AboutContent() {
                 className="w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-3 sm:mb-4 transition-transform duration-300 group-hover:scale-110"
                 style={{
                   backgroundColor: '#ffffff',
-                  border: `3px solid ${'rgba(59, 144, 50, 0.4)'}`,
-                  boxShadow: `0 4px 12px ${'rgba(59, 144, 50, 0.1)'}`
+                  border: `3px solid ${'#3b9032'}`,
+                  boxShadow: `0 4px 12px ${'rgba(59, 144, 50, 0.15)'}`
                 }}
               >
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke={'#3b9032'} strokeWidth="2.5" strokeLinecap="round">
@@ -2404,26 +2404,26 @@ export default function AboutContent() {
                 className="text-xs sm:text-sm mb-3 sm:mb-4"
                 style={{ color: '#6b7280' }}
               >
-                Pursuing NSF International certification for quality standards
+                NSF International certified for quality standards
               </p>
 
               {/* Status Badge */}
               <div 
                 className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full"
                 style={{
-                  backgroundColor: 'rgba(59, 144, 50, 0.08)',
-                  border: `1px solid ${'rgba(59, 144, 50, 0.2)'}`
+                  backgroundColor: 'rgba(59, 144, 50, 0.1)',
+                  border: `1px solid ${'rgba(59, 144, 50, 0.25)'}`
                 }}
               >
                 <div 
-                  className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full animate-pulse"
+                  className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full"
                   style={{ backgroundColor: '#3b9032' }}
                 ></div>
                 <span 
                   className="text-[10px] sm:text-xs font-semibold"
                   style={{ color: '#3b9032' }}
                 >
-                  In Progress
+                  Active
                 </span>
               </div>
             </div>
