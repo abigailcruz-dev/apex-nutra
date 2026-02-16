@@ -33,7 +33,8 @@ export async function POST(req: NextRequest) {
     } else {
       return NextResponse.json({ success: false, message: data.message || "Failed to send message." });
     }
-  } catch (error) {
-    return NextResponse.json({ success: false, message: "Network error." });
+  } catch (error: any) {
+    console.error("Contact form error:", error?.message || error);
+    return NextResponse.json({ success: false, message: "Network error. Please try again later." });
   }
 }
