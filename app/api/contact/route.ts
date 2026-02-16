@@ -1,38 +1,43 @@
 // app/api/contact/route.ts
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+    const { name, email, subject, message } = body;
 
-    const ACCESS_KEY = process.env.WEB3FORMS_KEY; // server-side only
-
-    if (!ACCESS_KEY) {
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not configured");
       return NextResponse.json(
-        { success: false, message: "Form service not configured." },
+        { success: false, message: "Email service not configured." },
         { status: 500 }
       );
     }
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        access_key: ACCESS_KEY,
-        ...body,
-      }),
+    const { data, error } = await resend.emails.send({
+      from: "Apex Nutra Contact <onboarding@resend.dev>",
+      to: "cruzabicanedo@gmail.com",
+      replyTo: email,
+      subject: `Contact Form: ${subject}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, "<br>")}</p>
+      `,
     });
 
-    const data = await response.json();
-
-    if (data.success) {
-      return NextResponse.json({ success: true, message: "Message sent!" });
-    } else {
-      return NextResponse.json({ success: false, message: data.message || "Failed to send message." });
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json({ success: false, message: error.message || "Failed to send message." });
     }
+
+    return NextResponse.json({ success: true, message: "Message sent!" });
   } catch (error: any) {
     console.error("Contact form error:", error?.message || error);
     return NextResponse.json({ success: false, message: "Network error. Please try again later." });
