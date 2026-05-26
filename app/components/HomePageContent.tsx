@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -1921,7 +1921,7 @@ export default function HomeContent() {
           {/* Bottom Copyright */}
           <div className="text-center">
             <p className="text-sm mb-1" style={{ color: '#6b7280' }}>
-              © 2025 Apex Nutra. All Rights Reserved.
+              © {new Date().getFullYear()} Apex Nutra. All Rights Reserved.
             </p>
             <p className="text-xs" style={{ color: '#9ca3af' }}>
               Your Partner in Premium Nutritional Manufacturing.

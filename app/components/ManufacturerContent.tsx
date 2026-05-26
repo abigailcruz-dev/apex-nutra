@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 
@@ -2399,7 +2399,7 @@ export default function ManufacturerContent() {
           </div>
 
           {/* Bottom Stats */}
-          <div className={`mt-10 lg:mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 section-animate animate-fadeInUp stagger-3 ${visibleSections.has('machinery') ? 'visible' : ''}`}>
+          <div className={`mt-10 lg:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 section-animate animate-fadeInUp stagger-3 ${visibleSections.has('machinery') ? 'visible' : ''}`}>
             <div className="text-center">
               <div 
                 className="text-3xl lg:text-4xl font-bold mb-2"
@@ -2448,22 +2448,7 @@ export default function ManufacturerContent() {
                 Precision Accuracy
               </div>
             </div>
-            <div className="text-center">
-              <div 
-                className="text-3xl lg:text-4xl font-bold mb-2"
-                style={{
-                  background: 'linear-gradient(90deg, #3b9032 0%, #81c029 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text'
-                }}
-              >
-                FDA
-              </div>
-              <div className="text-sm" style={{ color: '#6b7280' }}>
-                Registered & Certified
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
@@ -2636,7 +2621,7 @@ export default function ManufacturerContent() {
           {/* Bottom Copyright */}
           <div className="text-center">
             <p className="text-sm mb-1" style={{ color: '#6b7280' }}>
-              © 2025 Apex Nutra. All Rights Reserved.
+              © {new Date().getFullYear()} Apex Nutra. All Rights Reserved.
             </p>
             <p className="text-xs" style={{ color: '#9ca3af' }}>
               Your Partner in Premium Nutritional Manufacturing.

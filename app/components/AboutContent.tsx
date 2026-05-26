@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 
@@ -2247,67 +2247,8 @@ export default function AboutContent() {
           </div>
 
           {/* Grid Layout */}
-          <div className={`grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 section-animate animate-fadeInUp stagger-2 ${visibleSections.has('certifications') ? 'visible' : ''}`}>
+          <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto section-animate animate-fadeInUp stagger-2 ${visibleSections.has('certifications') ? 'visible' : ''}`}>
             
-            {/* FDA Certification Card */}
-            <div 
-              className="group relative rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105"
-              style={{
-                backgroundColor: 'rgba(59, 144, 50, 0.03)',
-                border: `1px solid ${'rgba(59, 144, 50, 0.1)'}`,
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.05)'
-              }}
-            >
-              {/* Icon */}
-              <div 
-                className="w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-3 sm:mb-4 transition-transform duration-300 group-hover:scale-110"
-                style={{
-                  backgroundColor: '#ffffff',
-                  border: `3px solid ${'#3b9032'}`,
-                  boxShadow: `0 4px 12px ${'rgba(59, 144, 50, 0.15)'}`
-                }}
-              >
-                <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke={'#3b9032'} strokeWidth="2.5" strokeLinecap="round">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-              </div>
-
-              {/* Content */}
-              <h3 
-                className="text-sm sm:text-lg font-semibold mb-1 sm:mb-2"
-                style={{ color: '#161616' }}
-              >
-                FDA Certified
-              </h3>
-
-              <p 
-                className="text-xs sm:text-sm mb-3 sm:mb-4"
-                style={{ color: '#6b7280' }}
-              >
-                Fully compliant with Food & Drug Administration regulations
-              </p>
-
-              {/* Status Badge */}
-              <div 
-                className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full"
-                style={{
-                  backgroundColor: 'rgba(59, 144, 50, 0.1)',
-                  border: `1px solid ${'rgba(59, 144, 50, 0.25)'}`
-                }}
-              >
-                <div 
-                  className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full"
-                  style={{ backgroundColor: '#3b9032' }}
-                ></div>
-                <span 
-                  className="text-[10px] sm:text-xs font-semibold"
-                  style={{ color: '#3b9032' }}
-                >
-                  Active
-                </span>
-              </div>
-            </div>
-
             {/* Utah Dept. of Agriculture Card */}
             <div 
               className="group relative rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105"
@@ -2370,7 +2311,7 @@ export default function AboutContent() {
 
             {/* NSF Certification Card - Active */}
             <div 
-              className="group relative rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105 col-span-2 lg:col-span-1 max-w-sm mx-auto lg:max-w-none"
+              className="group relative rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:scale-105"
               style={{
                 backgroundColor: 'rgba(59, 144, 50, 0.03)',
                 border: `1px solid ${'rgba(59, 144, 50, 0.1)'}`,
@@ -2644,7 +2585,7 @@ export default function AboutContent() {
           {/* Bottom Copyright */}
           <div className="text-center">
             <p className="text-sm mb-1" style={{ color: '#6b7280' }}>
-              © 2025 Apex Nutra. All Rights Reserved.
+              © {new Date().getFullYear()} Apex Nutra. All Rights Reserved.
             </p>
             <p className="text-xs" style={{ color: '#9ca3af' }}>
               Your Partner in Premium Nutritional Manufacturing.
